@@ -46,8 +46,9 @@ lerna-debug.log*
 /coverage
 
 # production
-/build
-/dist
+*/build
+*/dist
+*/.env
 
 # misc
 .DS_Store
