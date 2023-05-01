@@ -10,4 +10,10 @@ export default () => ({
     entities: ['dist/**/**/*.entity{.js,.ts}'],
     synchronize: true,
   },
+  redis: {
+    config: {
+      url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`,
+      password: process.env.DATABASE_PASSWORD,
+    },
+  },
 });
