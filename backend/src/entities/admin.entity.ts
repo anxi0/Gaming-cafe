@@ -1,4 +1,11 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Spot } from './spot.entity';
 
 @Entity()
 export class Admin extends BaseEntity {
@@ -10,4 +17,7 @@ export class Admin extends BaseEntity {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Spot, (spot) => spot.admin, { nullable: true })
+  spots: Spot[];
 }

@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './config/configuration';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RedisModule } from '@nestjs-modules/ioredis';
+import { AdminModule } from './Admin/admin.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { RedisModule } from '@nestjs-modules/ioredis';
       useFactory: (config: ConfigService) => config.get('redis'),
       inject: [ConfigService],
     }),
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],
