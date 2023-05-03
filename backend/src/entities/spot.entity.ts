@@ -1,5 +1,13 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Admin } from './admin.entity';
+import { Seat } from './seat.entity';
+import { Menu } from './menu.entity';
 
 @Entity()
 export class Spot {
@@ -17,4 +25,10 @@ export class Spot {
 
   @ManyToOne(() => Admin, (admin) => admin.spots)
   admin: Admin;
+
+  @OneToMany(() => Seat, (seat) => seat.spot)
+  seats: Seat[];
+
+  @OneToMany(() => Menu, (menu) => menu.spot)
+  menus: Menu[];
 }
