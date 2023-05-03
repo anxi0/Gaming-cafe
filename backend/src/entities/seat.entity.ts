@@ -7,7 +7,7 @@ import {
   PrimaryColumn,
 } from 'typeorm';
 import { Spot } from './spot.entity';
-// import { Order } from './order.entity';
+import { Order } from './order.entity';
 
 @Entity()
 export class Seat {
@@ -24,6 +24,6 @@ export class Seat {
   @Column()
   y: number;
 
-  // @OneToMany(() => Order, (order) => order.seat)
-  // orders: Order[];
+  @OneToMany(() => Order, (order) => order.seat)
+  orders: Order[];
 }

@@ -6,22 +6,22 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Spot } from './spot.entity';
-import { Order } from './order.entity';
+import { TagHistory } from './tag_history.entity';
 
 @Entity()
-export class Menu {
+export class Tag {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 50 })
-  name: string;
+  @Column()
+  seconds: number;
 
   @Column()
   price: number;
 
-  @ManyToOne(() => Spot, (spot) => spot.menus)
+  @ManyToOne(() => Spot, (spot) => spot.tags)
   spot: Spot;
 
-  @OneToMany(() => Order, (order) => order.menu)
-  orders: Order[];
+  @OneToMany(() => TagHistory, (history) => history.tag)
+  histories: TagHistory[];
 }
